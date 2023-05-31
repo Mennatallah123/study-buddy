@@ -1,4 +1,6 @@
-package com.cs102.studybuddy;
+package com.cs102.studybuddy.core;
+
+import android.widget.EditText;
 
 import java.util.HashMap;
 
@@ -33,6 +35,9 @@ public class User {
         this.okWithGroup = okWithGroup;
     }
 
+    public User(String username, String email, EditText name, EditText surname, int birthYear, String gender, HashMap<String, Integer> enrollments, String genderPreference, boolean okWithGroup) {
+    }
+
     public String getUsername() { return username; }
     public String getEmail() { return email; }
     public String getName() { return name; }
@@ -44,8 +49,19 @@ public class User {
     public String getGenderPreference() { return genderPreference; }
     public boolean isOkWithGroup() { return okWithGroup; }
 
-    public void Enroll(Course c) {
-        this.enrollments.put(c.getCourseId(), 10);
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void enroll(Course c) {
+        enrollments.put(c.getCourseId(), 0);
+    }
+
+    public void leave(Course c) {
+        enrollments.remove(c.getCourseId());
     }
 }

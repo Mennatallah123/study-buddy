@@ -1,6 +1,7 @@
-package com.cs102.studybuddy;
+package com.cs102.studybuddy.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -9,6 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cs102.studybuddy.core.StudyBuddy;
+import com.cs102.studybuddy.core.User;
+import com.cs102.studybuddy.R;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -78,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onCurrentUserFetched(@NonNull Task<QuerySnapshot> task) {
         if (!task.isSuccessful()) {
+            Log.e(StudyBuddy.TAG, task.getException().getLocalizedMessage());
             Toast.makeText(this, "Failed to load user data", Toast.LENGTH_LONG)
                 .show();
 
